@@ -28,6 +28,12 @@ NameError:
 
 4. Proceed to create the model, pressing `Ctrl+Alt+G` to invoke generators. Then type `model` and press ENTER, in the Add New model dialog then type `Artist name:string` 
 
+Alternatively use the generators from command line:
+
+```bash
+bin/rails generate model Artist name:string
+```
+
 5. Re-run migration again:
 ```bash
 bin/rails db:environment:set RAILS_ENV=test
