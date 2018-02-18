@@ -19,6 +19,7 @@ spec/rails_helper.rb
 Open `spec/rails_helper.rb` and configure shoulda matchers to use rspec as the test framework and full matcher libraries for rails. At the end of the file append:
 
 ```ruby
+# Add additional requires below this line. Rails is not loaded until this point!
 require 'shoulda/matchers'
 
 Shoulda::Matchers.configure do |config|
