@@ -1,4 +1,4 @@
-# Playing with Gems
+# Playing with Gems and installing Rails
 
 ## Upgrade Ruby gem manager
 ```bash
@@ -45,6 +45,7 @@ rvm @global do gem install nokogiri
 ## Install Rails
 ```bash
 gem install rails --version 5.1.5
+rails --version
 ```
 
 ## References
