@@ -54,9 +54,10 @@ export PATH="bin:${PATH}"
 EOF
 ```
 
-Allow current directory to change environment:
+Allow project directory to change environment:
 
 ```bash
+cd project_directory
 direnv allow .
 ```
 
@@ -73,11 +74,3 @@ Finally test the binaries:
 cd project_directory
 which rails # should say bin/rails
 ```
-
-
-
-
-
-
-
-
