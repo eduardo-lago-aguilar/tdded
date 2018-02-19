@@ -39,10 +39,20 @@ bin/rails generate model Artist name:string
 bin/rails db:environment:set RAILS_ENV=test
 ```
 
-6. Re-run the spec again `Shift-F10`
+6. Re-run the spec again `Shift-F10`. Specs should be green now!
 
-## Tip on Rails binaries
-As you might notice, calls are being performed using the `bin/rails` instead of `/.rvm/gems/ruby-2.4.1/bin/rails` which is on the path. Using the binaries stubs `bin\{bundle,rails,rake,setup,spring,update}` is the recommended way. To simplify calls [direnv](https://github.com/direnv/direnv) can be installed. 
+7. Alternatively run `bin/bundle exec rspec`
+
+## RSpec binstub
+You may want to create a binstub for the `rspec` command so it can be run via `bin/rspec`:
+```bash
+bin/bundle binstubs rspec-core
+which rspec
+rspec
+```
+
+## Tip on binaries
+As you might notice, calls are being performed using the `bin/rails` instead of `/.rvm/gems/ruby-2.4.1/bin/rails` which is on the path. Using the binaries stubs `bin\{bundle,rails,rake,setup,spring,update,rspec}` is the recommended way. To simplify calls [direnv](https://github.com/direnv/direnv) can be installed. 
 ```bash
 sudo apt -y install direnv
 ```
@@ -69,7 +79,7 @@ direnv allow .
 
 Make the statement permanent in `~/.bashrc` by appending this at the end:
 ```bash
-direnv allow project_directoy
+direnv allow project_directoy # full path specified!
 ```
 
 **IMPORTANT**: Append `.envrc` to `.gitignore` file!
@@ -79,4 +89,5 @@ Finally test the binaries:
 ```bash
 cd project_directory
 which rails # should say bin/rails
+rails server
 ```

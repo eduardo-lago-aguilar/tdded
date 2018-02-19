@@ -41,6 +41,7 @@ RSpec.configure do |config|
 
   # ...	
   config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
 
@@ -55,7 +56,7 @@ end
 ```
 
 ## Configure .rspec
-Open `.rspec` and enable coloring and automatically include rails_helper on every spec:
+Open `.rspec` and enable coloring and automatically include `rails_helper` on every spec:
 ```
 --color
 --require rails_helper
