@@ -6,20 +6,42 @@ ruby --version # ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
 rails --version # Rails 5.1.5
 ```
 
+## Install libpq-dev for `postgresql`
+```bash
+sudo apt install libpq-dev
+```
+
 ## Create app
 We want an API application, and to exclude Minitest the default testing framework and mail support:
 ```bash
-rails _5.1.5_ new todos-api --api --skip-test --skip-action-mailer --database=postgresql
+rails _5.1.5_ new music-hive --api --skip-test --skip-action-mailer --database=postgresql
+```
+
+a new project `music-hive` is created as well as git repository, open it in Rubymine.
+
+### Notes about Rails integration with modern Javascript libraries
+We will be installing [Angular :: Typescript via Webpacker](5-adding_angular_frontend.md) later on!
+
+## Append `.gitignore` entries
+Add the following entries to `.gitignore`, and commit `.gitignore` file:
+```
+.idea/
+log/
+tmp/
 ```
 
 ## Lock Ruby version into bundler
-Append the following to `Gemfile`:
+Open fresh project in Rubymine and append the following to `Gemfile`:
 ```ruby
 ruby '2.4.1'
 ```
 
-### Notes about Rails integration with modern Javascript libraries
-We will be installing [Angular :: Typescript via Webpacker](5-adding_angular_frontend.md) later on!
+## Launch the app
+```bash
+cd music-hive
+bin/rails server
+```
+go to [http://localhost:3000](http://localhost:3000)
 
 ## Adding dependencies for Specs
 - **rspec-rails**: State of the art testing framework.
@@ -49,13 +71,16 @@ end
 Install the gems by running in project directory:
 
 ```bash
-bundle install
+bin/bundle install
 ```
 
-## Launch the app
+## Launch the app (again)
 ```bash
-rails server
+bin/rails server
 ```
+go to [http://localhost:3000](http://localhost:3000)
+
+## Spring Tips
 
 ## Check spring status
 ```bash
@@ -67,8 +92,6 @@ spring status
 spring stop
 ```
 
-and go to [http://localhost:3000](http://localhost:3000)
-
 ## References
 - [Rails 5 Tutorial, Chapter 1 From zero to deploy](https://www.railstutorial.org/book/beginning#sec-the_hello_application)
 - [Build a RESTful JSON API With Rails 5 - Part One](https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-one)
@@ -79,4 +102,3 @@ and go to [http://localhost:3000](http://localhost:3000)
 - [faker](https://github.com/stympy/faker)
 - [Angular 2 with Rails and Webpacker](https://www.spectory.com/blog/Angular%202%20with%20Rails%20and%20Webpacker)
 - [Webpacker](https://github.com/Rails/webpacker)
-
