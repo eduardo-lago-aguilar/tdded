@@ -16,7 +16,7 @@ On top of the spec press `Ctrl+Shift+F10` to run the suite, you will a `pending 
 
 2. Run the pending migrations:
 ```bash
-bin/rails db:migrate RAILS_ENV=test
+rails db:migrate RAILS_ENV=test
 ```
 
 3. Re-run the spec `Shif+F10`, youl will get this error:
@@ -31,63 +31,14 @@ NameError:
 Alternatively use the generators from command line:
 
 ```bash
-bin/rails generate model Artist name:string
+rails generate model Artist name:string
 ```
 
 5. Re-run migration again:
 ```bash
-bin/rails db:environment:set RAILS_ENV=test
+rails db:environment:set RAILS_ENV=test
 ```
 
 6. Re-run the spec again `Shift-F10`. Specs should be green now!
 
-7. Alternatively run `bin/bundle exec rspec`
-
-## RSpec binstub
-You may want to create a binstub for the `rspec` command so it can be run via `bin/rspec`:
-```bash
-bin/bundle binstubs rspec-core
-which rspec
-rspec
-```
-
-## Tip on binaries
-As you might notice, calls are being performed using the `bin/rails` instead of `/.rvm/gems/ruby-2.4.1/bin/rails` which is on the path. Using the binaries stubs `bin\{bundle,rails,rake,setup,spring,update,rspec}` is the recommended way. To simplify calls [direnv](https://github.com/direnv/direnv) can be installed. 
-```bash
-sudo apt -y install direnv
-```
-
-Add the following line at the end of the `~/.bashrc` file:
-
-`eval "$(direnv hook bash)"`
-
-Create a `.envrc` file on project directory and add some export directives in it, specially one prioritizing local `bin` directoy in the `PATH` environemnt variable:
-
-```bash
-cd project_directory
-cat >> .envrc << EOF
-export PATH="bin:${PATH}"
-EOF
-```
-
-Allow project directory to change environment:
-
-```bash
-cd project_directory
-direnv allow .
-```
-
-Make the statement permanent in `~/.bashrc` by appending this at the end:
-```bash
-direnv allow project_directoy # full path specified!
-```
-
-**IMPORTANT**: Append `.envrc` to `.gitignore` file!
-
-Finally test the binaries:
-
-```bash
-cd project_directory
-which rails # should say bin/rails
-rails server
-```
+7. Alternatively run `bundle exec rspec`

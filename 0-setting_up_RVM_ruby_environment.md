@@ -1,5 +1,18 @@
 # Setting up RVM / Ruby Environment
 
+## Install `build-essential`
+```bash
+sudo apt -y install build-essential
+```
+
+## Install `libpq-dev` for `postgresql`
+```bash
+sudo apt install libpq-dev
+```
+
+## Install `NodeJS 9.x+`
+- See [Node.js v9.x](https://github.com/nodesource/distributions#installation-instructions) 
+
 ## Install RVM
 
 ### Install RVM GPG keys

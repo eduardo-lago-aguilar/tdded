@@ -10,3 +10,4 @@ Teching folks a bit of TDD
 - [ignore plugin](https://plugins.jetbrains.com/plugin/7495--ignore)
 - [Node.js v9.x](https://github.com/nodesource/distributions#installation-instructions) 
 - [YARN](https://yarnpkg.com/lang/en/docs/install/)
+- [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository)

@@ -6,18 +6,13 @@ ruby --version # ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
 rails --version # Rails 5.1.5
 ```
 
-## Install libpq-dev for `postgresql`
-```bash
-sudo apt install libpq-dev
-```
-
 ## Create app
 We want an API application, and to exclude Minitest the default testing framework and mail support:
 ```bash
-rails _5.1.5_ new music-hive --api --skip-test --skip-action-mailer --database=postgresql
+rails _5.1.5_ new music_hive --api --skip-test --skip-action-mailer --database=postgresql
 ```
 
-a new project `music-hive` is created as well as git repository, open it in Rubymine.
+a new project `music_hive` is created as well as git repository, open it in Rubymine.
 
 ### Notes about Rails integration with modern Javascript libraries
 We will be installing [Angular :: Typescript via Webpacker](5-adding_angular_frontend.md) later on!
@@ -38,7 +33,7 @@ ruby '2.4.1'
 
 ## Launch the app
 ```bash
-cd music-hive
+cd music_hive
 bin/rails server
 ```
 go to [http://localhost:3000](http://localhost:3000)
@@ -91,6 +86,48 @@ spring status
 ```bash
 spring stop
 ```
+
+## Tip on binaries
+As you might notice, calls are being performed using the `bin/rails` instead of `~/.rvm/gems/ruby-2.4.1/bin/rails` which is on the path. Using the binaries stubs `bin\{bundle,rails,rake,setup,spring,update,rspec}` is the recommended way. To simplify calls [direnv](https://github.com/direnv/direnv) can be installed. 
+```bash
+sudo apt -y install direnv
+```
+
+Add the following line at the end of the `~/.bashrc` file:
+
+`eval "$(direnv hook bash)"`
+
+Create a `.envrc` file on project directory and add some export directives in it, specially one prioritizing local `bin` directoy in the `PATH` environemnt variable:
+
+```bash
+cd project_directory
+cat >> .envrc << EOF
+export PATH="bin:${PATH}"
+EOF
+```
+
+Allow project directory to change environment:
+
+```bash
+cd project_directory
+direnv allow .
+```
+
+Make the statement permanent in `~/.bashrc` by appending this at the end:
+```bash
+direnv allow project_directoy # notice full path specified!
+```
+
+**IMPORTANT**: Append `.envrc` to `.gitignore` file!
+
+Finally test the binaries:
+
+```bash
+cd project_directory
+which rails # should say bin/rails
+rails server
+```
+
 
 ## References
 - [Rails 5 Tutorial, Chapter 1 From zero to deploy](https://www.railstutorial.org/book/beginning#sec-the_hello_application)
