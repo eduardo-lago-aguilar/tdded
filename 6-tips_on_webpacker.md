@@ -24,11 +24,41 @@ webpacker:install:typescript  Installs Typescript loader with an example
 ```
 
 ## Binstubs
-Under your project’s `bin/` directory:
-- `webpack`: Used to compile packs into the final output. It works with the current environment and accepts the same arguments you would normally pass to webpack directly.
-- `webpack-dev-server`: This allows to run server from which to load assets. Leverages advanced webpack features, such as *Hot Module Replacement* (HMR). Only used in development.
-- `webpack-watcher`: This script watches for changes in the `app/javascript/` directory and compiles them as changes are made.
-- `yarn:` A basic wrapper around the yarn executable. Yarn is a package manager for your code
+Under your project’s `bin/` directory Webpacker ships with two binstubs: `bin/webpack` and `bin/webpack-dev-server`. 
+Both are thin wrappers around the standard `webpack.js` and `webpack-dev-server.js` executables to ensure that the right 
+configuration files and environmental variables are loaded based on your environment.
+
+- `webpack`: Compiles packs into the final output.
+- `webpack-dev-server`: Runs server from which to load assets. Leverages advanced webpack features, such as *Hot Module Replacement* (HMR). Only used in development.
+- `yarn:` A basic wrapper around the yarn executable. Yarn is a package manager for your code.
+
+In development, Webpacker compiles on demand rather than upfront by default. This happens when you refer to any of the 
+pack assets using the Webpacker helper methods. This means that you don't have to run any separate processes. 
+Compilation errors are logged to the standard Rails log.
+
+If you want to use live code reloading, or you have enough JavaScript that on-demand compilation is too slow, you'll 
+need to run `bin/webpack-dev-server`. This process will watch for changes in the `app/javascript/packs/*.js` files and 
+automatically reload the browser to match.
+
+```bash
+# webpack dev server
+./bin/webpack-dev-server
+
+# watcher
+./bin/webpack --colors --progress
+
+# standalone build
+./bin/webpack
+```
+
+## Upgrading
+You can run following commands to upgrade Webpacker to the latest stable version. This process involves upgrading the gem and related npm modules:
+
+```bash
+bundle update webpacker
+yarn upgrade @rails/webpacker --latest
+yarn upgrade webpack-dev-server --latest
+```
 
 ## Configuration files
 Configuration files for webpack can be found in the `config/webpack/`, most projects won’t need anything done to either the `development.js` or `production.js` or `test.js` files, and will instead only need to modify the `environment.js` file which other files include:
@@ -70,5 +100,24 @@ yarn add <package-name>       # add to 'dependences' group
 yarn add <package-name> --dev # add to 'devDependencies' group
 ```
 
-## Webpack
-...
+### Yarn Integrity
+
+By default, in development, webpacker runs a yarn integrity check to ensure that all local npm packages are up-to-date. 
+This is similar to what bundler does currently in Rails, but for JavaScript packages. If your system is out of date, 
+then Rails will not initialize. You will be asked to upgrade your local npm packages by running `yarn install`.
+
+To turn off this option, you will need to override the default by adding a new config option to your Rails development 
+environment configuration file (`config/environment/development.rb`):
+
+```ruby
+config.webpacker.check_yarn_integrity = false
+```
+
+You may also turn on this feature by adding the config option to any Rails environment configuration file:
+
+```ruby
+config.webpacker.check_yarn_integrity = true
+```
+
+## References
+- [Webpacker](https://github.com/rails/webpacker#usage)

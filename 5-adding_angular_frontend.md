@@ -34,10 +34,45 @@ bundle
 rails webpacker:install
 ```
 
+Once installed, you can start writing modern ES6-flavored JavaScript apps right away:
+
+```
+app/javascript:
+  ├── packs:
+  │   # only webpack entry files here
+  │   └── application.js
+  └── src:
+  │   └── application.css
+  └── images:
+      └── logo.svg
+```
+
+You can then link the JavaScript pack in Rails views using the `javascript_pack_tag` helper. If you have styles imported 
+in your pack file, you can link them by using `stylesheet_pack_tag`:
+
+```
+<%= javascript_pack_tag 'application' %>
+<%= stylesheet_pack_tag 'application' %>
+```
+
+If you want to link a static asset for `<link rel="prefetch">` or `<img />` tag, you can use the `asset_pack_path` helper:
+
+```
+<link rel="prefetch" href="<%= asset_pack_path 'application.css' %>" />
+<img src="<%= asset_pack_path 'images/logo.svg' %>" />
+```
+
+**Note**: In order for your styles or static assets files to be available in your view, you would need to link them in 
+your "pack" or entry file.
+
 ## Install Webpacker :: Angular
 ```bash
 rails webpacker:install:angular
 ```
+
+The installer will add the TypeScript and Angular core libraries using Yarn alongside a few changes to the configuration 
+files. An example component written in TypeScript will also be added to your project in `app/javascript` so that you can 
+experiment with Angular right away.
 
 ## Spec for `PagesController`
 Create spec `spec/controllers/pages_controller_spec.rb`, and run it:
