@@ -17,6 +17,12 @@ a new project `music_hive` is created as well as git repository, open it in Ruby
 ### Notes about Rails integration with modern Javascript libraries
 We will be installing [Angular :: Typescript via Webpacker](5-adding_angular_frontend.md) later on!
 
+## Update binstubs
+```bash
+cd project_directory
+bin/rails app:update:bin
+```
+
 ## Append `.gitignore` entries
 Add the following entries to `.gitignore`, and commit `.gitignore` file:
 ```
@@ -79,12 +85,12 @@ go to [http://localhost:3000](http://localhost:3000)
 
 ## Check spring status
 ```bash
-spring status
+bin/spring status
 ```
 
 ## Stop spring
 ```bash
-spring stop
+bin/spring stop
 ```
 
 ## Tip on binaries
@@ -127,3 +133,5 @@ cd project_directory
 which rails # should say bin/rails
 rails server
 ```
+
+
