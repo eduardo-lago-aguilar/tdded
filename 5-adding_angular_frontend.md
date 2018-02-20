@@ -81,7 +81,8 @@ end
 ## Append `index.html.erb`
 Add `app/views/pages/index.html.erb` with following content:
 ```html
-<hello-angular/>
+<hello-angular>Loading...</hello-angular>
+
 <%= javascript_pack_tag 'hello_angular' %>
 ```
 
