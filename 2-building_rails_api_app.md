@@ -27,8 +27,6 @@ bin/rails app:update:bin
 Add the following entries to `.gitignore`, and commit `.gitignore` file:
 ```
 .idea/
-log/
-tmp/
 ```
 
 ## Lock Ruby version into bundler
