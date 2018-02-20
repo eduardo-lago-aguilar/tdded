@@ -69,3 +69,6 @@ remote: -----> Detecting rake tasks
 **NOTE**: Notice how Heroku detected Ruby and Node.js buildpacks!.
 
 Open target url [https://shielded-ocean-41035.herokuapp.com/](https://shielded-ocean-41035.herokuapp.com/)
+
+## References
+- [Heroku + Rails 5](https://devcenter.heroku.com/articles/getting-started-with-rails5)
