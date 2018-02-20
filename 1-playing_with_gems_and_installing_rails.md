@@ -47,7 +47,3 @@ rvm @global do gem install nokogiri
 gem install rails --version 5.1.5
 rails --version
 ```
-
-## References
-- [Differnce between Global & Default gemsets](https://stackoverflow.com/questions/18198764/difference-between-rvm-default-and-global-gemset)
-- [Bundler: What is a Gemfile](https://tosbourn.com/what-is-the-gemfile/)

@@ -7,7 +7,7 @@ sudo apt -y install build-essential
 
 ## Install `libpq-dev` for `postgresql`
 ```bash
-sudo apt install libpq-dev
+sudo apt -y install libpq-dev
 ```
 
 ## Install `NodeJS 9.x+`

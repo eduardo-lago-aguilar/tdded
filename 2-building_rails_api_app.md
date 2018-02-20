@@ -115,7 +115,7 @@ direnv allow .
 
 Make the statement permanent in `~/.bashrc` by appending this at the end:
 ```bash
-direnv allow project_directoy # notice full path specified!
+direnv allow ~/my_projects/project_directoy # notice full path specified!
 ```
 
 **IMPORTANT**: Append `.envrc` to `.gitignore` file!
@@ -127,15 +127,3 @@ cd project_directory
 which rails # should say bin/rails
 rails server
 ```
-
-
-## References
-- [Rails 5 Tutorial, Chapter 1 From zero to deploy](https://www.railstutorial.org/book/beginning#sec-the_hello_application)
-- [Build a RESTful JSON API With Rails 5 - Part One](https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-one)
-- [rspec-rails](https://github.com/rspec/rspec-rails)
-- [Fuubar](https://github.com/thekompanee/fuubar)
-- [shoulda_matchers](https://github.com/thoughtbot/shoulda-matchers)
-- [database_cleaner](https://github.com/DatabaseCleaner/database_cleaner)
-- [faker](https://github.com/stympy/faker)
-- [Angular 2 with Rails and Webpacker](https://www.spectory.com/blog/Angular%202%20with%20Rails%20and%20Webpacker)
-- [Webpacker](https://github.com/Rails/webpacker)

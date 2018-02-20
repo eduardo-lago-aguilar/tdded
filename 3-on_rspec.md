@@ -75,6 +75,11 @@ You may want to create a binstub for the `rspec` command so it can be run via `r
 bundle binstubs rspec-core
 ```
 
+## Update binstubs
+```bash
+rails app:update:bin
+```
+
 ## Launch Postgres Test database
 ```bash
 docker run --rm -it -p 5432:5432 -e POSTGRES_DB=music_hive_test --name music_hive_db postgres:9.5-alpine
@@ -103,11 +108,14 @@ test:
 ```
 
 ## Run RSpec first time!
+First run pending migrations in test database:
+
 ```bash
-rails db:migrate
-rspec
+rails db:migrate RAILS_ENV=test
 ```
 
-## References
-- [RubyMine Cheats](https://resources.jetbrains.com/storage/products/rubymine/docs/RubyMine_ReferenceCard.pdf)
-- [RubyMine Cheats on Mac](https://resources.jetbrains.com/storage/products/rubymine/docs/RubyMine_ReferenceCard_mac.pdf)
+then execute `rspec` binstub:
+
+```bash
+rspec
+```

@@ -4,7 +4,7 @@
 
 ## Start with the spec
 
-1. Create a new archive `spec/artist_spec.rb` and append a simple spec:
+1. Create a new archive `spec/models/artist_spec.rb` and append a simple spec:
 
 ```ruby
 describe Artist, type: :model do
@@ -12,33 +12,39 @@ describe Artist, type: :model do
 end
 ```
 
-On top of the spec press `Ctrl+Shift+F10` to run the suite, you will a `pending migration error`
-
-2. Run the pending migrations:
-```bash
-rails db:migrate RAILS_ENV=test
-```
-
-3. Re-run the spec `Shif+F10`, youl will get this error:
+On top of the spec press `Ctrl+Shift+F10` to run the suite, you will get this error:
 ```
 NameError:
   uninitialized constant Artist
 # ./spec/models/artist_spec.rb:1:in `<top (required)>'
 ```
 
-4. Proceed to create the model, pressing `Ctrl+Alt+G` to invoke generators. Then type `model` and press ENTER, in the Add New model dialog then type `Artist name:string` 
+2. Configure rails generators to not generating stylesheet, templates, specs, JavaScript, helpers and test fixture files for scaffolds altogether. Append in `config/application.rb`:
+```ruby
+  class Application < Rails::Application
+ 	# ...
+    config.generators do |g|
+      g.template_engine false
+      g.test_framework  false
+      g.stylesheets     false
+      g.javascripts     false
+      g.helper          false
+    end
+  end
+```
 
-Alternatively use the generators from command line:
+3. Generate the `Artist` model by pressing `Ctrl+Alt+G` in Rubymine to invoke generators. Then type `model` and press ENTER, in the `Add New model` dialog then type `Artist name:string`. Or alternatively use the generators from command line:
 
 ```bash
 rails generate model Artist name:string
 ```
 
-5. Re-run migration again:
+4. Re-run migration again:
 ```bash
-rails db:environment:set RAILS_ENV=test
+rails db:migrate RAILS_ENV=test
 ```
 
-6. Re-run the spec again `Shift-F10`. Specs should be green now!
-
-7. Alternatively run `bundle exec rspec`
+5. Re-run the spec again `Shift-F10`. Specs should be green now. Alternatively run:
+ ```bash
+ rspec
+ ```
