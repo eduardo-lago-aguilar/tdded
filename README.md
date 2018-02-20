@@ -28,4 +28,5 @@ Teching folks a bit of TDD
 - [RubyMine Cheats](https://resources.jetbrains.com/storage/products/rubymine/docs/RubyMine_ReferenceCard.pdf)
 - [RubyMine Cheats on Mac](https://resources.jetbrains.com/storage/products/rubymine/docs/RubyMine_ReferenceCard_mac.pdf)
 - [Generators](http://guides.rubyonrails.org/generators.html)
+- [Heroku + Rails 5](https://devcenter.heroku.com/articles/getting-started-with-rails5)
 
