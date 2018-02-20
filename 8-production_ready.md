@@ -70,5 +70,18 @@ remote: -----> Detecting rake tasks
 
 Open target url [https://shielded-ocean-41035.herokuapp.com/](https://shielded-ocean-41035.herokuapp.com/)
 
+## See Heroku environment
+```bash
+$ heroku config
+=== shielded-ocean-41035 Config Vars
+DATABASE_URL:             postgres://userhere:******@ec2-54-83-37-223.compute-1.amazonaws.com:5432/d3qb5ljpcb6qlg
+LANG:                     en_US.UTF-8
+RACK_ENV:                 production
+RAILS_ENV:                production
+RAILS_LOG_TO_STDOUT:      enabled
+RAILS_SERVE_STATIC_FILES: enabled
+SECRET_KEY_BASE:          <some-secret-here>
+```
+
 ## References
 - [Heroku + Rails 5](https://devcenter.heroku.com/articles/getting-started-with-rails5)
