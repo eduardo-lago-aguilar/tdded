@@ -15,7 +15,7 @@ We will be adding `Webpacker` + `Angular` + `Typescript` , see [Agular with Type
 See [Yarn](https://yarnpkg.com/lang/en/docs/install/).
 
 ## Add Webpacker
-Append to your `Gemfile`:
+Append `Webpacker` to `Gemfile`:
 
 ```ruby
 gem 'webpacker', '~> 3.2'
@@ -24,8 +24,10 @@ gem 'webpacker', '~> 3.2'
 then execute:
 
 ```bash
-bundle install
+bundle
 ```
+
+**NOTE**: `bundle` is the same as `bundle install`.
 
 ## Install Webpacker
 ```bash
@@ -37,30 +39,9 @@ rails webpacker:install
 rails webpacker:install:angular
 ```
 
-## Generate `Pages` controller
-```bash
-rails generate controller Pages index
-```
+## Spec for `PagesController`
+Create spec `spec/controllers/pages_controller_spec.rb`, and run it:
 
-## Set root route
-Change `config/routes.rb` to:
-```ruby
-Rails.application.routes.draw do
-  root 'pages#index'
-end
-```
-
-## Edit `app/controllers/pages_controller.rb`:
-```ruby
-class PagesController < ActionController::Base
-  def index
-  end
-end
-```
-
-**IMPORTANT**: Notice that `PagesController` inherits from `ActionController::Base` instead of `ApplicationController`.
-
-Also notice that `spec/controllers/pages_controller_spec.rb` was generated as well, change it to:
 ```ruby
 describe PagesController, type: :controller do
 
@@ -74,28 +55,86 @@ describe PagesController, type: :controller do
 end
 ```
 
+## Generate `Pages` controller
+```bash
+rails generate controller Pages index
+```
+
+## Edit `app/controllers/pages_controller.rb`:
+```ruby
+class PagesController < ActionController::Base
+  def index
+  end
+end
+```
+
+**IMPORTANT**: Notice that `PagesController` inherits from `ActionController::Base` instead of `ApplicationController`.
+
+## Set root route
+Change `config/routes.rb` to:
+```ruby
+Rails.application.routes.draw do
+  root 'pages#index'
+end
+```
+
 ## Append `index.html.erb`
 Add `app/views/pages/index.html.erb` with following content:
 ```html
-<div>
-  <hello-angular></hello-angular>
-</div>
-
+<hello-angular/>
 <%= javascript_pack_tag 'hello_angular' %>
 ```
 
-## Check if Webpack :: Angular was properly integrated
+## Re-run the spec again
+Press `Shift-F10` on Rubymine to execute current configuration, specs should be green now!. Alternatively run:
+ ```bash
+ rspec
+ ```
 
+## Check if Webpack :: Angular was properly integrated
 Run `webpack-dev-server` in separated tab for fast reload:
 
 ```bash
 webpack-dev-server
 ```
 
+## Configure database for development environment
+Edit `config/database.yml` and append `username` and `host` on `development:` environment:
+```yml
+development:
+  <<: *default
+  #...
+  username: postgres
+  host: localhost
+```
+
+## Launch Postgres Development database
+```bash
+docker run --rm -it -p 5432:5432 -e POSTGRES_DB=music_hive_development --name music_hive_db postgres:9.5-alpine
+```
+
+test connection via `docker`:
+
+```bash
+docker run -it --rm --link music_hive_db:postgres postgres psql -h postgres -U postgres music_hive_development -c 'select 1;'
+```
+
+or locally via `psql`:
+
+```bash
+psql -h localhost -U postgres music_hive_development -c 'select 1;'
+```
+
+## Run migration for development
+```bash
+rails db:migrate
+```
+
+## Launch rails on development mode
 Run `rails`:
 
 ```bash
 rails server
 ```
 
-go to `http://localhost:3000`
+go to `http://localhost:3000`. A **Hello Angular!** text should appear!

@@ -91,7 +91,7 @@ or locally via `psql`:
 psql -h localhost -U postgres music_hive_test -c 'select 1;'
 ```
 
-## Configure test environment
+## Configure database for test environment
 Edit `config/database.yml` and append `username` and `host` on `test:` environment:
 ```yml
 test:
