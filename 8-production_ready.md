@@ -1,6 +1,13 @@
 # Production ready
 This guide covers using Rails 5 on Heroku:
 
+## Add Gzip compression [OPTIONAL]
+Open `config/application.rb` and enter:
+
+```ruby
+config.middleware.insert_after ActionDispatch::Static, Rack::Deflater
+```
+
 ## Requirements
 - Basic Ruby/Rails knowledge.
 - A locally installed version of Ruby 2.2.0+, Rubygems, Bundler, and Rails 5+.
