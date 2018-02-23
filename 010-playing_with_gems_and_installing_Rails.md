@@ -1,4 +1,4 @@
-# Playing with Gems and installing Rails
+# Playing with gems and installing Rails
 
 ## Upgrade Ruby gem manager
 ```bash

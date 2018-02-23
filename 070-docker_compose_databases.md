@@ -1,4 +1,4 @@
-# Compose DBs
+# Docker Compose Databases
 Let's compose `development` and `test` database via `docker-compose` to allow both to exist locally at the same time, create a `docker-compose.yml` archive:
 
 ```yml

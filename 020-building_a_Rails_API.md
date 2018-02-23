@@ -1,4 +1,4 @@
-# Building Rails API App
+# Building a Rails API
 
 ## Check for requirents
 ```bash

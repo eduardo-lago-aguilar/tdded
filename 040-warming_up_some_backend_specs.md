@@ -1,6 +1,4 @@
-# TDDing al fin!
-
-**Rule #1**: Test goes first!
+# Warming up some backend specs
 
 ## Start with the spec
 Create a new archive `spec/models/artist_spec.rb` and append a simple spec:

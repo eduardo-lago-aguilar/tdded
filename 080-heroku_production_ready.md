@@ -1,4 +1,4 @@
-# Production ready
+# Heroku Production ready
 This guide covers using Rails 5 on Heroku:
 
 ## Add Gzip compression [OPTIONAL]
